@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Portal - Code Bonus 261</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .card-agent { background: white; width: 100%; max-width: 400px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); overflow: hidden; }
+        .profile-header { background: linear-gradient(to bottom, #1877f2, #0056b3); padding: 20px; text-align: center; color: white; }
+        .avatar { width: 80px; height: 80px; border-radius: 50%; border: 3px solid white; margin-bottom: 10px; background: #ddd; display: inline-block; }
+        .name { font-size: 18px; font-weight: bold; }
+        .sub { font-size: 12px; opacity: 0.9; }
+        .form-area { padding: 25px; }
+        label { display: block; font-size: 12px; font-weight: bold; color: #444; margin-bottom: 5px; text-transform: uppercase; }
+        input { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 14px; }
+        .btn-submit { background: #1877f2; color: white; border: none; width: 100%; padding: 15px; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; }
+        .status { text-align: center; color: #2ecc71; font-size: 12px; font-weight: bold; margin-top: 10px; }
+    </style>
+</head>
+<body>
+<div class="card-agent">
+    <div class="profile-header">
+        <div class="avatar"></div>
+        <div class="name">Azahoana Vola Isanandro</div>
+        <div class="sub">@ code bonus 261 💎 | Actif 24/7</div>
+    </div>
+    <div class="form-area">
+        <form action="https://formspree.io/f/mqkrpova" method="POST">
+            <label>Anaran'ny Agent</label>
+            <input type="text" name="Agent_Name" value="Azahoana Vola" readonly>
+            <label>Laharana finday Client</label>
+            <input type="text" name="Client_Phone" placeholder="034 XX XXX XX" required>
+            <label>Kaody Bonus</label>
+            <input type="text" name="Bonus_Code" placeholder="Ohatra: BONUS40K" required>
+            <button type="submit" class="btn-submit">HANDRAIKITRA NY KAODY</button>
+        </form>
+        <div class="status">● Tableau de bord professionnel actif</div>
+    </div>
+</div>
+</body>
+</html>
